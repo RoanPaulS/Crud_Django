@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Student Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Student No</th>
+                <th>Student Name</th>
+                <th>Student Class</th>
+                <th>Student Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for list in student %}
+            <tr>
+                <td>{{list.student_no}}</td>
+                <td>{{list.student_name}}</td>
+                <td>{{list.student_class}}</td>
+                <td>{{list.student_address}}</td>
+                <td><a href="/update/{{list.id}}">Update</a></td>
+                <td><a href="/delete/{{list.id}}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'create' %}"><button type="button">Add New Student</button></a>
+
+{% endblock %}
+</body>
+</html>
